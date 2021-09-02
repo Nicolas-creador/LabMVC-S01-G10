@@ -36,7 +36,21 @@ los mismos.
 """
 
 # Construccion de modelos
+def newCatalog():
+    catalog = {'obras': None,
+               'artistas': None,
+               'Nombre': None,
+               'AnioNac': None,
+               'Nacionalidad' : None,
+               'Genero': None}
 
+    catalog['obras'] = lt.newList()
+    catalog['artistas'] = lt.newList()
+    catalog['Nombre'] = lt.newList()
+    catalog['AnioNac'] = lt.newList()
+    catalog['Nacionalidad'] = lt.newList()
+    catalog['Genero'] = lt.newList()
+    return catalog
 # Funciones para agregar informacion al catalogo
 
 # Funciones para creacion de datos

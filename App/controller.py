@@ -30,8 +30,47 @@ El controlador se encarga de mediar entre la vista y el modelo.
 """
 
 # Inicialización del Catálogo de libros
-
+def initCatalog():
+    catalog = model.newCatalog()
+    return catalog
 # Funciones para la carga de datos
+def loadData(catalog):
+    loadObras(catalog)
+    loadNombre(catalog)
+    loadAnioNac(catalog)
+    loadNacionalidad(catalog)
+    loadGenero(catalog)
+
+def loadObras(catalog):
+    obrasfile = cf.data_dir + 'MoMA/Artists-utf8-5pct.csv'
+    input_file = csv.DictReader(open(obrasfile, encoding='utf-8'))
+    for obra in input_file:
+        model.addObra(catalog, obra)
+
+def loadNombre(catalog):
+    nombrefile = cf.data_dir + 'MoMA/Artists-utf8-5pct.csv'
+    input_file = csv.DictReader(open(nombrefile, encoding='utf-8'))
+    for nombre in input_file:
+        model.addNombre(catalog, nombre)
+
+def loadAnioNac(catalog):
+    anionacfile = cf.data_dir + 'MoMA/Artists-utf8-5pct.csv'
+    input_file = csv.DictReader(open(anionacfile, encoding='utf-8'))
+    for anionac in input_file:
+        model.addAnioNac(catalog, anionac)
+
+
+def loadNacionalidad(catalog):
+    nacionalidadfile = cf.data_dir + 'MoMA/Artists-utf8-5pct.csv'
+    input_file = csv.DictReader(open(nacionalidadfile, encoding='utf-8'))
+    for nacionalidad in input_file:
+        model.addNacionalidad(catalog, nacionalidad)
+
+def loadGenero(catalog):
+    generofile = cf.data_dir + 'MoMA/Artists-utf8-5pct.csv'
+    input_file = csv.DictReader(open(generofile, encoding='utf-8'))
+    for genero in input_file:
+        model.addGenero(catalog, genero)    
 
 # Funciones de ordenamiento
 

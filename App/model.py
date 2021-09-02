@@ -42,10 +42,6 @@ def newCatalog():
 
     catalog['obras'] = lt.newList()
     catalog['artistas'] = lt.newList('SINGLE_LINKED')
-    catalog['Nombre'] = lt.newList('SINGLE_LINKED')
-    catalog['AnioNac'] = lt.newList('SINGLE_LINKED')
-    catalog['Nacionalidad'] = lt.newList('SINGLE_LINKED')
-    catalog['Genero'] = lt.newList('SINGLE_LINKED')
 
     return catalog
 # Funciones para agregar informacion al catalogo

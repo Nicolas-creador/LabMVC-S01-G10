@@ -56,9 +56,31 @@ def newCatalog():
 
 def addObra(catalog, obra):
     lt.addLast(catalog['obras'], obra)
-    artista = obra['artistas'].split(",")
+    artistas = obra['artistas'].split(",")
+    for artista in artistas:
+        addObraArtista(catalog, artista.strip(), obra)
+
+def addBookAuthor(catalog, authorname, obra):
+    artistas = catalog['artistas']
+    posartista = lt.isPresent(artistas, authorname)
+    if posartista > 0:
+        artista = lt.getElement(artistas, posartista)
+    else:
+        artista = newArtista(authorname)
+        lt.addLast(artistas, artista)
+    lt.addLast(artista['obras'], obra)
 
 # Funciones para creacion de datos
+
+def newArtista(name):
+    """
+    Crea una nueva estructura para modelar los libros de
+    un autor y su promedio de ratings
+    """
+    artista = {'name': "", "obras": None,  "average_rating": 0}
+    artista['name'] = name
+    artista['obras'] = lt.newList('ARRAY_LIST')
+    return artista
 
 # Funciones de consulta
 

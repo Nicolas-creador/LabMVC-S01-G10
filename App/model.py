@@ -48,7 +48,6 @@ def newCatalog():
 
 def addObra(catalog, obra):
     lt.addLast(catalog['obras'], obra)
-    artistas = obra['artistas'].split(",")
 
 # Funciones para creacion de datos
 

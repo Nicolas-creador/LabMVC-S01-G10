@@ -50,8 +50,13 @@ def newCatalog():
     catalog['AnioNac'] = lt.newList('SINGLE_LINKED')
     catalog['Nacionalidad'] = lt.newList('SINGLE_LINKED')
     catalog['Genero'] = lt.newList('SINGLE_LINKED')
+
     return catalog
 # Funciones para agregar informacion al catalogo
+
+def addObra(catalog, obra):
+    lt.addLast(catalog['obras'], obra)
+    artista = obra['artistas'].split(",")
 
 # Funciones para creacion de datos
 

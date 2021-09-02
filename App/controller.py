@@ -44,6 +44,8 @@ def loadData(catalog):
 def loadObras(catalog):
     obrasfile = cf.data_dir + 'MoMA/Artists-utf8-5pct.csv'
     input_file = csv.DictReader(open(obrasfile, encoding='utf-8'))
+    for obra in input_file:
+        model.addBook(catalog, obra)
 
 def loadNombre(catalog):
     nombrefile = cf.data_dir + 'MoMA/Artists-utf8-5pct.csv'

@@ -38,11 +38,7 @@ los mismos.
 # Construccion de modelos
 def newCatalog():
     catalog = {'obras': None,
-               'artistas': None,
-               'Nombre': None,
-               'AnioNac': None,
-               'Nacionalidad' : None,
-               'Genero': None}
+               'artistas': None}
 
     catalog['obras'] = lt.newList()
     catalog['artistas'] = lt.newList('SINGLE_LINKED')

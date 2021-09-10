@@ -50,6 +50,8 @@ def addObra(catalog, obra):
     lt.addLast(catalog['obras'], obra)
 # Funciones para creacion de datos
 
+def addArtist(catalog, artista):
+    lt.addLast(catalog['artistas'], artista)
 
 # Funciones de consulta
 

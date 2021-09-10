@@ -36,13 +36,19 @@ def initCatalog():
 # Funciones para la carga de datos
 def loadData(catalog):
     loadObras(catalog)
+    loadArtists(catalog)
 
 def loadObras(catalog):
-    obrasfile = cf.data_dir + 'MoMA/Artists-utf8-5pct.csv'
-    input_file = csv.DictReader(open(obrasfile, encoding='utf-8'))
+    ObrasFile = cf.data_dir + 'MoMA/Artworks-utf8-5pct.csv'
+    input_file = csv.DictReader(open(ObrasFile, encoding='utf-8'))
     for obra in input_file:
         model.addObra(catalog, obra)
 
+def loadArtists(catalog):
+    artistasFile = cf.data_dir + 'MoMA/Artists-utf8-5pct.csv'
+    input_file = csv.DictReader(open(artistasFile, encoding='utf-8'))
+    for artista in input_file:
+        model.addArtist(catalog, artista)
 # Funciones de ordenamiento
 
 # Funciones de consulta sobre el catálogo

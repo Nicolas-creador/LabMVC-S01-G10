@@ -29,6 +29,7 @@ import config as cf
 from DISClib.ADT import list as lt
 from DISClib.Algorithms.Sorting import shellsort as sa
 assert cf
+import datetime
 
 """
 Se define la estructura de un catálogo de videos. El catálogo tendrá dos listas, una para los videos, otra para las categorias de
@@ -48,12 +49,22 @@ def newCatalog():
 
 def addObra(catalog, obra):
     lt.addLast(catalog['obras'], obra)
-# Funciones para creacion de datos
 
 def addArtist(catalog, artista):
     lt.addLast(catalog['artistas'], artista)
+# Funciones para creacion de datos
+
+
 
 # Funciones de consulta
+def listarCronologicamente(catalog, añoInicial, añoFinal):
+    listaEnRango = lt.newList()
+    for artista in lt.iterator(catalog["artistas"]):
+        if int(artista["BeginDate"]) >= añoInicial and int(artista["BeginDate"]) <= añoFinal:
+            lt.addLast(listaEnRango, artista)
+    return listaEnRango
+
+
 
 # Funciones utilizadas para comparar elementos dentro de una lista
 

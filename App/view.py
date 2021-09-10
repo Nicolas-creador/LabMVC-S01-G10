@@ -45,6 +45,9 @@ def initCatalog():
 def loadData(catalog):
     controller.loadData(catalog)
 
+def listarCronologicamente(catalog, añoInicial, añoFinal):
+    return controller.listarCronologicamente(catalog, añoInicial, añoFinal)
+
 catalog = None
 
 """
@@ -61,8 +64,28 @@ while True:
         print('Artistas cargados: ' + str(lt.size(catalog['artistas'])))
 
     elif int(inputs[0]) == 2:
-        pass
+        añoInicial = int(input("Ingrese el año inicial(yyyy): "))
+        añoFinal = int(input("Ingrese el año final(yyyy): "))
+        print("Listando los artistas de manera cronologica ....")
+        
+        listaEnRango = listarCronologicamente(catalog, añoInicial, añoFinal)
+        tamaño = lt.size(listaEnRango)
+        print("Numero de artistas dentro del rango: " + str(tamaño))
 
+        artist1 = lt.getElement(listaEnRango, 1)
+        artist2 = lt.getElement(listaEnRango, 2)
+        artist3 = lt.getElement(listaEnRango, 3)
+        artist4 = lt.getElement(listaEnRango, tamaño-2)
+        artist5 = lt.getElement(listaEnRango, tamaño-1)
+        artist6 = lt.getElement(listaEnRango, tamaño)
+
+        artistas = artist1,artist2,artist3,artist4,artist5,artist6
+        for artista in artistas:    
+            print(["Nombre: " + artista["DisplayName"], 
+                    "Nacimiento: "+ artista["BeginDate"], 
+                    "Fallecimmiento: " + artista["EndDate"],
+                    "Nacionalidad: " + artista["Nationality"],
+                    "Genero: " + artista["Gender"]])
     else:
         sys.exit(0)
 sys.exit(0)

@@ -51,11 +51,13 @@ def initCatalog():
 def loadData(catalog):
     controller.loadData(catalog)
 
+# Requisito 1
 def listarCronologicamente(catalog, añoInicial, añoFinal):
     return controller.listarCronologicamente(catalog, añoInicial, añoFinal)
 
+# Requisito 4
 def nacionalidadCreadores(catalog):
-    pass
+    controller.nacionalidadCreadores(catalog)
 
 catalog = None
 
@@ -110,7 +112,7 @@ while True:
 
     elif int(inputs[0]) == 6:
         pass
-    
+
     else:
         sys.exit(0)
 sys.exit(0)

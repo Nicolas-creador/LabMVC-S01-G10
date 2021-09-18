@@ -81,11 +81,11 @@ while True:
 
         artistas = artist1,artist2,artist3,artist4,artist5,artist6
         for artista in artistas:    
-            print(["Nombre: " + artista["DisplayName"], 
-                    "Nacimiento: "+ artista["BeginDate"], 
-                    "Fallecimmiento: " + artista["EndDate"],
-                    "Nacionalidad: " + artista["Nationality"],
-                    "Genero: " + artista["Gender"]])
+            print("Nombre: " + artista["DisplayName"],
+                    ", Nacimiento: "+ artista["BeginDate"], 
+                    ", Fallecimmiento: " + artista["EndDate"],
+                    ", Nacionalidad: " + artista["Nationality"],
+                    ", Genero: " + artista["Gender"])
     else:
         sys.exit(0)
 sys.exit(0)

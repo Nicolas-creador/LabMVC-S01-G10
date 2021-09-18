@@ -62,7 +62,14 @@ def listarCronologicamente(catalog, añoInicial, añoFinal):
     for artista in lt.iterator(catalog["artistas"]):
         if int(artista["BeginDate"]) >= añoInicial and int(artista["BeginDate"]) <= añoFinal:
             lt.addLast(listaEnRango, artista)
-    return listaEnRango
+
+    listaFinal = lt.newList()
+    for i in range(añoInicial,añoFinal+1):
+        for elemento in lt.iterator(listaEnRango):
+            if int(elemento["BeginDate"]) == i:
+                lt.addLast(listaFinal, elemento)  
+
+    return listaFinal
 
 
 

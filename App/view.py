@@ -35,9 +35,15 @@ operación solicitada
 """
 
 def printMenu():
+    print(chr(27)+"[1;32m")
     print("Bienvenido")
-    print("1- Cargar información en el catálogo")
-    print("2- Listar cronológicamente los artistas")
+    print(chr(27)+"[0;37m")
+    print(chr(27)+"[4;32m"+"1" + chr(27)+ "[0;37m" + "- Cargar información en el catálogo")
+    print(chr(27)+"[4;32m"+ "2" + chr(27)+ "[0;37m" + "- Listar cronológicamente los artistas")
+    print(chr(27)+"[4;32m"+ "3" + chr(27)+ "[0;37m" + "- Listar cronologicamente las adquisiciones")
+    print(chr(27)+"[4;32m"+ "4" + chr(27)+ "[0;37m" + "- Clasificar las obras de un artista por tecnica")
+    print(chr(27)+"[4;32m"+ "5" + chr(27)+ "[0;37m" + "- Clasificar las obras por la nacionalidad de sus creadores")
+    print(chr(27)+"[4;32m"+ "6" + chr(27)+ "[0;37m" + "- Transportar obras de un departamento")
 
 def initCatalog():
     return controller.initCatalog()
@@ -55,7 +61,10 @@ Menu principal
 """
 while True:
     printMenu()
-    inputs = input('Seleccione una opción para continuar\n')
+    print(chr(27)+"[1;37m")
+    inputs = input('Seleccione una opción para continuar: ')
+    print(chr(27)+"[0;37m")
+
     if int(inputs[0]) == 1:
         print("Cargando información de los archivos ....")
         catalog = initCatalog()
@@ -70,7 +79,7 @@ while True:
         
         listaEnRango = listarCronologicamente(catalog, añoInicial, añoFinal)
         tamaño = lt.size(listaEnRango)
-        print("Numero de artistas dentro del rango: " + str(tamaño))
+        print("Numero de artistas dentro del rango: " + str(tamaño)+"/n")
 
         artist1 = lt.getElement(listaEnRango, 1)
         artist2 = lt.getElement(listaEnRango, 2)
@@ -81,11 +90,11 @@ while True:
 
         artistas = artist1,artist2,artist3,artist4,artist5,artist6
         for artista in artistas:    
-            print("Nombre: " + artista["DisplayName"],
-                    ", Nacimiento: "+ artista["BeginDate"], 
-                    ", Fallecimmiento: " + artista["EndDate"],
-                    ", Nacionalidad: " + artista["Nationality"],
-                    ", Genero: " + artista["Gender"])
+            print(chr(27)+"[1;34m"+ "Nombre: " + chr(27)+"[0;37m"+ artista["DisplayName"],
+                    chr(27)+"[1;34m"+ ", Nacimiento: "+ chr(27)+"[0;37m"+ artista["BeginDate"], 
+                    chr(27)+"[1;34m"+ ", Fallecimmiento: " + chr(27)+"[0;37m"+ artista["EndDate"],
+                    chr(27)+"[1;34m"+ ", Nacionalidad: " + chr(27)+"[0;37m"+ artista["Nationality"],
+                    chr(27)+"[1;34m"+ ", Genero: " + chr(27)+"[0;37m"+ artista["Gender"])
     else:
         sys.exit(0)
 sys.exit(0)

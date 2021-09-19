@@ -57,7 +57,8 @@ def listarCronologicamente(catalog, añoInicial, añoFinal):
 
 # Requisito 4
 def nacionalidadCreadores(catalog):
-    controller.nacionalidadCreadores(catalog)
+    nacionalidades = controller.nacionalidadCreadores(catalog)
+    return nacionalidades
 
 catalog = None
 
@@ -108,7 +109,7 @@ while True:
         pass
 
     elif int(inputs[0]) == 5:
-        pass
+        print(nacionalidadCreadores(catalog))
 
     elif int(inputs[0]) == 6:
         pass

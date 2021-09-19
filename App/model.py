@@ -71,8 +71,26 @@ def listarCronologicamente(catalog, añoInicial, añoFinal):
 
     return listaFinal
 
+def nacionalidadCreadores(catalog):
+    listaNacionalidades = {}
+    info = {}
+    for artista in lt.iterator(catalog["artistas"]):
+        if artista["Nationality"] not in listaNacionalidades:
+            listaNacionalidades[artista["Nationality"]]= 0 
+        info[artista["ConstituentID"]] = artista["Nationality"]
+    
+    for obra in lt.iterator(catalog["obras"]):
+        for id in obra["ConstituentID"].split(", "):
+            id = id.replace("[","")
+            id = id.replace("]","")
+            pais = info[id]
+            listaNacionalidades[pais] += 1
+            
 
+    return listaNacionalidades
 
 # Funciones utilizadas para comparar elementos dentro de una lista
+
+
 
 # Funciones de ordenamiento

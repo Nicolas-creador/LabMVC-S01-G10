@@ -57,7 +57,10 @@ def listarCronologicamente(catalog, añoInicial, añoFinal):
     return listaEnRango
 
 def nacionalidadCreadores(catalog):
-    nacionalidades = model.nacionalidadCreadores(catalog)
-    return nacionalidades
+    dictnacionalidades,info = model.nacionalidadCreadores(catalog)
+    clasificacion = model.sortpaises(dictnacionalidades) 
+    obras = model.obrasPais(catalog,info,clasificacion)
+    return clasificacion, obras
+    
 
 

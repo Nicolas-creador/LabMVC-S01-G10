@@ -124,8 +124,11 @@ def obrasPais(catalog,info,lista):
             id = id.replace("]","")
             if info[id]["Nacionalidad"] == pais:
                 condicion = True
-        if condicion:    
-            lt.addLast(listaFinal,obra)
+        if condicion: 
+            formatoObra =  {"Titulo":obra["Title"] ,"Artistas":info[id]["Nombre"],
+            "Fecha":obra["Date"],"Medio":obra["Medium"],
+            "Dimensiones":obra["Dimensions"]} 
+            lt.addLast(listaFinal,formatoObra)
 
    return listaFinal
 

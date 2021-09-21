@@ -111,7 +111,8 @@ while True:
         pass
 
     elif int(inputs[0]) == 6:
-        pass
+        departamento = (input("Ingrese el departamento a transportar las obras"))
+        transportar_obras(catalog,departamento)
 
     else:
         sys.exit(0)

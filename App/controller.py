@@ -55,5 +55,9 @@ def loadArtistas(catalog):
 def listarCronologicamente(catalog, añoInicial, añoFinal):
     listaEnRango = model.listarCronologicamente(catalog, añoInicial, añoFinal)
     return listaEnRango
+  
+def transportar_obras(catalog,departamento):
+    eso = model.transportar_obras(catalog, departamento)
+    return eso
 
 

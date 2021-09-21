@@ -70,6 +70,34 @@ def listarCronologicamente(catalog, añoInicial, añoFinal):
                 lt.addLast(listaFinal, elemento)  
 
     return listaFinal
+   
+   
+ def transportar_obras(catalog,departamento):
+    count = 0
+    peso= 0
+    tamaño = 0
+    mas_antiguo= 0
+    conteo= 1
+    antigüedad= lt.newList()
+    for obra in lt.iterator(catalog["obras"]):
+        num_int = (obra["Dimensions"]).replace(")","(")
+        num_int = num_int.split ("(")
+        for elemento in (num_int):
+            if "cm" in elemento:
+                elemento = (elemento).replace("x","*")
+                elemento = (elemento).replace("cm","")
+                print(elemento)
+        conteo +=1
+        print(conteo)
+        if departamento != (obra["Department"]):
+            count += 1
+            if (obra["Weight (kg)"]) != "":
+                peso += float(obra["Weight (kg)"])
+        if (obra["Date"]) != "":
+            if int(obra["Date"]) < mas_antiguo:
+                mas_antiguo = (obra["Date"])
+    lt.addLast(antigüedad,obra)
+    return count
 
 
 

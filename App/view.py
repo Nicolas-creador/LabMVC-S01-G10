@@ -57,14 +57,34 @@ def loadData(catalog):
 # Requisito 1
 def listarCronologicamente(catalog, añoInicial, añoFinal):
     return controller.listarCronologicamente(catalog, añoInicial, añoFinal)
+ 
+# Requisito 2
+def listarAdquisiciones(catalog, fechaInicial, fechaFinal):
+    return controller.listarAdquisiciones(catalog, fechaInicial, fechaFinal)
 
+def compra(catalog):
+    return controller.compra(catalog)
 # Requisito 4
 def nacionalidadCreadores(catalog):
     nacionalidades = controller.nacionalidadCreadores(catalog)
     return nacionalidades
-
+# Requisito 5
 def transportar_obras(catalog):
     pass
+
+def obra_antigua(catalog,departamento):
+    return controller.obra_antigua(catalog,departamento)
+
+def printSortResults(ord_obras, sample=5):
+    size = lt.size(ord_obras)
+    if size > sample:
+        print("Las cinco obras más antiguas son: ")
+        i=1
+        while i <= sample:
+            obra = lt.getElement(ord_obras,i)
+            print('Titulo: ' + obra['Title'],
+            "Fecha " + obra["Date"])
+            i+=1
 
 catalog = None
 
@@ -140,9 +160,11 @@ while True:
 
 
     elif int(inputs[0]) == 6:
-        departamento = (input("Ingrese el departamento a transportar las obras"))
+        departamento = (input("Ingrese el departamento a transportar las obras: "))
         transportar_obras(catalog,departamento)
-
+        result = controller.ordenarObras(catalog)
+        printSortResults(result)
+        
     else:
         sys.exit(0)
 sys.exit(0)

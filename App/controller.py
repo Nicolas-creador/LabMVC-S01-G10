@@ -50,11 +50,20 @@ def loadArtistas(catalog):
     for artista in input_file:
         model.addArtist(catalog, artista)
 # Funciones de ordenamiento
-
+def ordenarObras(catalog):
+    return model.ordenarObras(catalog)
 # Funciones de consulta sobre el catálogo
 def listarCronologicamente(catalog, añoInicial, añoFinal):
     listaEnRango = model.listarCronologicamente(catalog, añoInicial, añoFinal)
     return listaEnRango
+  
+def listarAdquisiciones(catalog, fechaInicial, fechaFinal):
+    resultado = model.listarAdquisiciones(catalog, fechaInicial, fechaFinal)
+    return resultado
+
+def compra(catalog):
+    compras= model.compra(catalog)
+    return compras
   
 def transportar_obras(catalog,departamento):
     eso = model.transportar_obras(catalog, departamento)

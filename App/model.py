@@ -72,7 +72,7 @@ def listarCronologicamente(catalog, añoInicial, añoFinal):
     return listaFinal
    
    
- def transportar_obras(catalog,departamento):
+def transportar_obras(catalog,departamento):
     count = 0
     peso= 0
     tamaño = 0

@@ -59,6 +59,9 @@ def listarCronologicamente(catalog, añoInicial, añoFinal):
 def nacionalidadCreadores(catalog):
     controller.nacionalidadCreadores(catalog)
 
+def transportar_obras(catalog):
+    pass
+
 catalog = None
 
 """

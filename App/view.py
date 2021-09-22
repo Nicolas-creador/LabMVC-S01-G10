@@ -26,6 +26,9 @@ import controller
 from DISClib.ADT import list as lt
 assert cf
 
+default_limit = 1000
+sys.setrecursionlimit(default_limit*10)
+
 
 """
 La vista se encarga de la interacción con el usuario
@@ -85,6 +88,7 @@ while True:
         
         listaEnRango = listarCronologicamente(catalog, añoInicial, añoFinal)
         tamaño = lt.size(listaEnRango)
+        print("\n")
         print("Numero de artistas dentro del rango: " + str(tamaño)+"\n")
 
         artist1 = lt.getElement(listaEnRango, 1)
@@ -93,6 +97,8 @@ while True:
         artist4 = lt.getElement(listaEnRango, tamaño-2)
         artist5 = lt.getElement(listaEnRango, tamaño-1)
         artist6 = lt.getElement(listaEnRango, tamaño)
+
+        print(chr(27)+"[1;37m"+"Los primeros y los ultimos 3 son: "+chr(27)+"[0;37m")
 
         artistas = artist1,artist2,artist3,artist4,artist5,artist6
         for artista in artistas:    
@@ -109,7 +115,26 @@ while True:
         pass
 
     elif int(inputs[0]) == 5:
-       print(nacionalidadCreadores(catalog))
+       clasificacion,obras = nacionalidadCreadores(catalog)
+       print(chr(27)+"[1;44m"+"NACIONALIDADES CON EL MAYOR NUMERO DE OBRAS"+chr(27)+"[0;37m")
+       print("\n")
+       for pais in lt.iterator(clasificacion): 
+           for llave in pais.keys():
+               print(chr(27)+"[1;34m"+llave+"   "+chr(27)+"[0;37m"+str(pais[llave]))
+               print("\n")
+
+       print(chr(27)+"[1;44m"+"INFORMACION DE LAS 20 PRIMERAS OBRAS DE LA NACIONALIDAD CON EL MAYOR NUMERO DE OBRAS"+chr(27)+"[0;37m")
+       conteo = 0
+       for obra in lt.iterator(obras): 
+           print("\n")
+           conteo += 1
+           for llave2 in obra.keys():
+               print(chr(27)+"[1;34m"+llave2+": "+chr(27)+"[0;37m"+obra[llave2])
+           if conteo == 25:
+               break 
+           
+
+
 
     elif int(inputs[0]) == 6:
         pass

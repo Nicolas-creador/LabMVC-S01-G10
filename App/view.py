@@ -70,8 +70,7 @@ def nacionalidadCreadores(catalog):
     return nacionalidades
 # Requisito 5
 def transportar_obras(catalog):
-    pass
-
+    return controller.transportar_obras(catalog,departamento)
 def obra_antigua(catalog,departamento):
     return controller.obra_antigua(catalog,departamento)
 

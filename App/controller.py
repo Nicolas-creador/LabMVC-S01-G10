@@ -39,20 +39,23 @@ def loadData(catalog):
     loadArtistas(catalog)
 
 def loadObras(catalog):
-    ObrasFile = cf.data_dir + 'MoMA/Artworks-utf8-large.csv'
+    ObrasFile = cf.data_dir + 'MoMA/Artworks-utf8-small.csv'
     input_file = csv.DictReader(open(ObrasFile, encoding='utf-8'))
     for obra in input_file:
         model.addObra(catalog, obra)
 
 def loadArtistas(catalog):
-    artistasFile = cf.data_dir + 'MoMA/Artists-utf8-large.csv'
+    artistasFile = cf.data_dir + 'MoMA/Artists-utf8-small.csv'
     input_file = csv.DictReader(open(artistasFile, encoding='utf-8'))
     for artista in input_file:
         model.addArtist(catalog, artista)
+
 # Funciones de ordenamiento
 def ordenarObras(catalog):
     return model.ordenarObras(catalog)
+
 # Funciones de consulta sobre el catálogo
+
 def listarCronologicamente(catalog, añoInicial, añoFinal):
     listaEnRango = model.listarCronologicamente(catalog, añoInicial, añoFinal)
     return listaEnRango
@@ -60,14 +63,10 @@ def listarCronologicamente(catalog, añoInicial, añoFinal):
 def listarAdquisiciones(catalog, fechaInicial, fechaFinal):
     resultado = model.listarAdquisiciones(catalog, fechaInicial, fechaFinal)
     return resultado
-
-def compra(catalog):
-    compras= model.compra(catalog)
-    return compras
   
 def transportar_obras(catalog,departamento):
-    eso = model.transportar_obras(catalog, departamento)
-    return eso
+    transporte = model.transportar_obras(catalog, departamento)
+    return transporte
 
 def nacionalidadCreadores(catalog):
     dictnacionalidades,info = model.nacionalidadCreadores(catalog)

@@ -69,7 +69,7 @@ def nacionalidadCreadores(catalog):
     nacionalidades = controller.nacionalidadCreadores(catalog)
     return nacionalidades
 # Requisito 5
-def transportar_obras(catalog):
+def transportar_obras(catalog,departamento):
     return controller.transportar_obras(catalog,departamento)
 def obra_antigua(catalog,departamento):
     return controller.obra_antigua(catalog,departamento)
@@ -82,7 +82,11 @@ def printSortResults(ord_obras, sample=5):
         while i <= sample:
             obra = lt.getElement(ord_obras,i)
             print('Titulo: ' + obra['Title'],
-            "Fecha " + obra["Date"])
+            ", Clasificación " + obra["Classification"],
+            ", Artista " + obra["ConstituentID"],
+            ", Fecha "+ obra["Date"],
+            ", medio "+ obra["Medium"],
+            ", dimensiones"+ obra["Dimensions"])
             i+=1
 
 catalog = None
@@ -120,7 +124,7 @@ while True:
         artist5 = lt.getElement(listaEnRango, tamaño-1)
         artist6 = lt.getElement(listaEnRango, tamaño)
 
-        print(chr(27)+"[1;37m"+"Los primeros y los ultimos 3 son: "+chr(27)+"[0;37m")
+        print(chr(27)+"[1;37m"+"Los primeros y los últimos 3 son: "+chr(27)+"[0;37m")
 
         artistas = artist1,artist2,artist3,artist4,artist5,artist6
         for artista in artistas:    
@@ -131,7 +135,34 @@ while True:
                     chr(27)+"[1;34m"+ ", Genero: " + chr(27)+"[0;37m"+ artista["Gender"])
     
     elif int(inputs[0]) == 3:
-        pass
+        fechaInicial = (input("Ingrese la fecha inicial(yyyy-mm-dd): "))
+        año, mes, día = map(int, fechaInicial.split('-'))
+        fechaInicial= (año, mes, día)
+        fechaFinal = (input("Ingrese el año final(yyyy-mm-dd): "))
+        año2, mes2, día2 = map(int, fechaFinal.split('-'))
+        fechaFinal= (año2, mes2, día2)
+        print("Listando las adquisiciones de manera cronologica ....")
+        resultado = listarAdquisiciones(catalog, fechaInicial, fechaFinal)
+        tamaño = lt.size(resultado)
+        print("Numero de obras dentro del rango: " + str(tamaño))
+        compras= compra(catalog)
+        print("Número total de obras adquiridas por compra " + str(compras))
+
+        obra1 = lt.getElement(resultado, 1)
+        obra2 = lt.getElement(resultado, 2)
+        obra3 = lt.getElement(resultado, 3)
+        obra4 = lt.getElement(resultado, tamaño-2)
+        obra5 = lt.getElement(resultado, tamaño-1)
+        obra6 = lt.getElement(resultado, tamaño)
+
+        print(chr(27)+"[1;37m"+"Las primeros y las últimos 3 obras son: "+chr(27)+"[0;37m")
+
+        obras = obra1,obra2,obra3,obra4,obra5,obra6
+        for obra in obras:    
+            print("Título: " + obra["Title"],
+                    ", Fecha: " + obra["Date"],
+                    ", Medio: " + obra["Medium"],
+                    ", Dimensiones: " + obra["Dimensions"])
 
     elif int(inputs[0]) == 4:
         pass
@@ -155,13 +186,12 @@ while True:
            if conteo == 25:
                break 
            
-
-
-
     elif int(inputs[0]) == 6:
         departamento = (input("Ingrese el departamento a transportar las obras: "))
-        transportar_obras(catalog,departamento)
-        result = controller.ordenarObras(catalog)
+        transporte,count,peso,precio_estimado = transportar_obras(catalog,departamento)
+        print("El número de obras a transportar es: " + str(count))
+        result = controller.ordenarObras(transporte)
+        print("Peso estimado de las obras: " + str(peso))
         printSortResults(result)
         
     else:

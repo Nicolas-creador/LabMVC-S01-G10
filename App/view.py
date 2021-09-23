@@ -69,8 +69,6 @@ def nacionalidadCreadores(catalog):
 # Requisito 5
 def transportar_obras(catalog,departamento):
     return controller.transportar_obras(catalog,departamento)
-def obra_antigua(catalog,departamento):
-    return controller.obra_antigua(catalog,departamento)
 
 def printSortResults(ord_obras, sample=5):
     size = lt.size(ord_obras)
@@ -79,7 +77,7 @@ def printSortResults(ord_obras, sample=5):
         i=1
         while i <= sample:
             obra = lt.getElement(ord_obras,i)
-            print('Titulo: ' + obra['Title'],
+            print("Titulo: " + obra["Title"],
             ", Clasificación " + obra["Classification"],
             ", Artista " + obra["ConstituentID"],
             ", Fecha "+ obra["Date"],
@@ -186,7 +184,7 @@ while True:
            
     elif int(inputs[0]) == 6:
         departamento = (input("Ingrese el departamento a transportar las obras: "))
-        transporte,count,peso,precio_estimado = transportar_obras(catalog,departamento)
+        transporte,count,peso = transportar_obras(catalog,departamento)
         print("El número de obras a transportar es: " + str(count))
         result = controller.ordenarObras(transporte)
         print("Peso estimado de las obras: " + str(peso))

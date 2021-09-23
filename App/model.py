@@ -100,7 +100,7 @@ def clasificar_tecnica(catalog,nombre):
                 id = id.replace("[","")
                 id = id.replace("]","")
                 tecnica = datos[id]["Nombre"]
-
+            pass
 
 def nacionalidadCreadores(catalog):
     dictNacionalidades = {}
@@ -141,61 +141,10 @@ def transportar_obras(catalog,departamento):
             mayor=0
             for elemento in (num_int):
                 numeros= 1
-                if "cm" in elemento:
-                    elemento = (elemento).replace("18.4 × 11.4 cm to","")
-                    elemento = (elemento).replace("x","*")
-                    elemento = (elemento).replace("X","*")
-                    elemento = (elemento).replace("×","*")
-                    elemento = (elemento).replace("cm","")
-                    elemento = (elemento).replace("; overall", "")
-                    elemento = (elemento).replace("to 767","")
-                    elemento = (elemento).replace (" ","")
-                    elemento= (elemento).replace("l.","")
-                    elemento= elemento.split("*")
-                    conteo=0
-                    numeros=1
-                    for num in elemento:
-                        conteo +=1
-                        num= float(num)
-                        numeros*=num
-                if mayor  < numeros and numeros !=1:
-                    mayor=numeros
-            if mayor != 0:
-                if conteo == 2:
-                    mayor = mayor/10000
-                    precio_estimado += 72/mayor
-                    lt.addLast(obras_precios,72/mayor)
-                else:
-                    mayor = mayor/1000000
-                    precio_estimado += 72/mayor
-                    lt.addLast(obras_precios,72/mayor)
-            else:
-                precio_estimado += 48
-                lt.addLast(obras_precios,48)
-            """lt.addLast(obras_departamento,obra) 
-            count += 1
-            if (obra["Height (cm)"]) != "" and (obra["Height (cm)"]) != "0":
-                Altura = float(obra["Height (cm)"])
-                Altura= Altura/100
-            if (obra["Length (cm)"]) != "" and (obra["Length (cm)"]) != "0":
-                Largo = float(obra["Length (cm)"])
-                Largo= Largo/100
-            if (obra["Width (cm)"]) != "" and (obra["Width (cm)"]) != "0":
-                Ancho = float(obra["Width (cm)"])
-                Ancho= Ancho/100
-            if (obra["Weight (kg)"]) != "":
-                peso += float(obra["Weight (kg)"])
-
-        Dimensión= Ancho*Largo*Altura
-        print(Dimensión)
-        if Dimensión != 1:
-            precio_estimado = 72/Dimensión
-        else:
-            precio_estimado = 48
-        print(precio_estimado)"""
-    return obras_departamento,count,peso,obras_precios
+    return obras_departamento,count,peso
 
 # Funciones utilizadas para comparar elementos dentro de una lista
+
 def comparar_antigüedad(obra1, obra2):
     if (obra1["Date"]) != "" and (obra2["Date"] !=""):
         return (int(obra1['Date']) < int(obra2['Date']))
@@ -236,7 +185,8 @@ def obrasPais(catalog,info,lista):
             lt.addLast(listaFinal,formatoObra)
 
    return listaFinal
-  
+
+
 def ordenarObras(transporte):
     sub_list = lt.subList(transporte,1,lt.size(transporte))
     sub_list = sub_list.copy()

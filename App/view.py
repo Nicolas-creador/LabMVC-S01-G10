@@ -153,13 +153,14 @@ while True:
         obra6 = lt.getElement(resultado, tamaño)
 
         print(chr(27)+"[1;37m"+"Las primeros y las últimos 3 obras son: "+chr(27)+"[0;37m")
-
+        print("\n")
         obras = obra1,obra2,obra3,obra4,obra5,obra6
         for obra in obras:    
-            print("Título: " + obra["Title"],
-                    ", Fecha: " + obra["Date"],
-                    ", Medio: " + obra["Medium"],
-                    ", Dimensiones: " + obra["Dimensions"])
+            print(chr(27)+"[1;34m"+"Título: " + chr(27)+"[0;37m"+obra["Title"],
+                    chr(27)+"[1;34m"+", Fecha: " + chr(27)+"[0;37m"+obra["Date"],
+                    chr(27)+"[1;34m"+", Medio: " + chr(27)+"[0;37m"+obra["Medium"],
+                    chr(27)+"[1;34m"+", Dimensiones: " + chr(27)+"[0;37m"+obra["Dimensions"])
+            print("\n")
 
     elif int(inputs[0]) == 4:
         pass

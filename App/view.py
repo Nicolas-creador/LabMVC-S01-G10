@@ -62,8 +62,6 @@ def listarCronologicamente(catalog, añoInicial, añoFinal):
 def listarAdquisiciones(catalog, fechaInicial, fechaFinal):
     return controller.listarAdquisiciones(catalog, fechaInicial, fechaFinal)
 
-def compra(catalog):
-    return controller.compra(catalog)
 # Requisito 4
 def nacionalidadCreadores(catalog):
     nacionalidades = controller.nacionalidadCreadores(catalog)
@@ -142,10 +140,9 @@ while True:
         año2, mes2, día2 = map(int, fechaFinal.split('-'))
         fechaFinal= (año2, mes2, día2)
         print("Listando las adquisiciones de manera cronologica ....")
-        resultado = listarAdquisiciones(catalog, fechaInicial, fechaFinal)
+        resultado,compras = listarAdquisiciones(catalog, fechaInicial, fechaFinal)
         tamaño = lt.size(resultado)
         print("Numero de obras dentro del rango: " + str(tamaño))
-        compras= compra(catalog)
         print("Número total de obras adquiridas por compra " + str(compras))
 
         obra1 = lt.getElement(resultado, 1)
